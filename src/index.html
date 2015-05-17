@@ -1,0 +1,17 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>{%= o.htmlWebpackPlugin.options.title %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" href="style.css" />
+
+<script>
+    var __env = {
+        {% for (var key in o.htmlWebpackPlugin.options.env) { %}
+        {%= key %}: "{%= o.htmlWebpackPlugin.options.env[key] %}",
+        {% } %}
+    };
+</script>
+
+<script src="vendor.js"></script>
+<script src="index.js"></script>
