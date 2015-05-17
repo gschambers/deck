@@ -3,3 +3,6 @@ node_modules
 
 # LOGGING
 npm-debug.log
+
+# OUTPUT
+dist
