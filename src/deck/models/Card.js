@@ -1,6 +1,6 @@
 import { List, Record } from "immutable";
 
-export default Card({
+export default Record({
     /** @type {!Number} */
     id: null,
 
@@ -25,5 +25,13 @@ export default Card({
      *
      * @type {?Faction}
      */
-    faction: null
+    faction: null,
+
+    /**
+     * Card role. A means of categorising cards into
+     * attacking/defensive/castle-type roles.
+     *
+     * @type {?Role}
+     */
+     role: null
 });

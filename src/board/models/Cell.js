@@ -1,10 +1,11 @@
-import { Record } from "immutable";
+import { List, Record } from "immutable";
 
 export const types = {
-    EMPTY: 0,
+    COMMUNITY: 0,
     DISCARD: 1,
     DRAW: 2,
-    COMMUNITY: 3
+    EMPTY: 3,
+    HAND: 4
 };
 
 export default Record({
@@ -13,10 +14,11 @@ export default Record({
      * be played on it and how players can interact
      * with it. The following types are supported:
      *
-     * EMPTY - no card may be played
+     * COMMUNITY - cards available to all players
      * DISCARD - cards discarded from hand or after turn
      * DRAW - cards that can be drawn into hand
-     * COMMUNITY - cards available to all players
+     * EMPTY - no card may be played
+     * HAND - cards available to play next turn
      *
      * @type {Number}
      */
@@ -25,7 +27,7 @@ export default Record({
     /**
      * One or more cards played on this cell.
      *
-     * @type {List<Card>}
+     * @type {!List<Card>}
      */
-    cards: null
+    cards: List()
 });

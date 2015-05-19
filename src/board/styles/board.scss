@@ -1,19 +1,77 @@
 .board {
-    display: flex;
+    border: 1px rgba(0, 0, 0, 0.35) solid;
     flex-direction: column;
+    display: flex;
     height: 100%;
+    transition: transform 1s linear;
     width: 100%;
+
+    &--rotate {
+        transform:
+            perspective(500px)
+            rotateX(45deg)
+            scale(0.65);
+    }
 }
 
 .board__row {
+    border: white solid;
+    border-width: 2px 0;
     display: flex;
     flex-grow: 1;
+
+    &:first-child {
+        border-top-width: 4px;
+    }
+
+    &:last-child {
+        border-bottom-width: 4px;
+    }
 }
 
 .board__cell {
+    border: white solid;
+    border-width: 0 2px;
     flex-grow: 1;
-}
+    position: relative;
 
-.board__cell--empty {
+    &:first-child {
+        border-left-width: 4px;
+    }
 
+    &:last-child {
+        border-right-width: 4px;
+    }
+
+    &--community {
+        background-color: rgba(255, 0, 0, 0.15);
+    }
+
+    &--discard {
+
+    }
+
+    &--draw {
+
+    }
+
+    &--empty {
+        background-color: rgba(0, 0, 0, 0.15);
+
+        &:hover {
+            background-color: rgba(255, 0, 255, 0.15);
+        }
+    }
+
+    .card {
+        align-items: center;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
 }

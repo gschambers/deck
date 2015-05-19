@@ -1,16 +1,20 @@
 import React from "react";
+import { Observable } from "rx";
 import Board from "../components/Board";
 import * as BoardStore from "../stores/BoardStore";
 import { logError } from "../../common/helpers/error";
+import { render } from "../../common/helpers/render";
 
 /**
  * @param {Board} board
  * @return {ReactElement}
  */
-function render(board) {
-    return React.render(
-        <Board board={board} />,
-        document.body
+function buildComponent(board) {
+    return (
+        <Board
+            board={board}
+            rotate={true}
+        />
     );
 }
 
@@ -18,7 +22,10 @@ function render(board) {
  * @return {Rx.Disposable}
  */
 export function BoardController(id) {
-    return BoardStore.observeById(id).forEach(
+    return Observable.combineLatest(
+        BoardStore.observeById(id),
+        buildComponent
+    ).forEach(
         render, logError
     );
 }

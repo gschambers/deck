@@ -1,6 +1,10 @@
-html,
-body {
+html {
     height: 100%;
-    margin: 0;
-    width: 100%;
+}
+
+body {
+    box-sizing: border-box;
+    height: 90vh;
+    margin: 5vh 5vw;
+    width: 90vw;
 }

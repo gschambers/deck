@@ -1,7 +1,9 @@
+import classnames from "classnames";
 import React, { Component, PropTypes } from "react";
+
 import BoardModel from "../models/Board";
 import { types as cellTypes } from "../models/Cell";
-import EmptyCell from "./EmptyCell";
+import Cell from "./Cell";
 import Row from "./Row";
 
 /**
@@ -10,18 +12,17 @@ import Row from "./Row";
  */
 export default class Board extends Component {
     static propTypes = {
-        board: PropTypes.instanceOf(BoardModel).isRequired
+        board: PropTypes.instanceOf(BoardModel).isRequired,
+        rotate: PropTypes.bool.isRequired
+    };
+
+    static defaultProps = {
+        rotate: false
     };
 
     renderRow(row, key) {
         const cells = row.map(
-            (cell, i) => {
-                switch (cell.type) {
-                    default:
-                    case cellTypes.EMPTY:
-                        return <EmptyCell key={i} cell={cell} />;
-                }
-            }
+            (cell, i) => <Cell key={i} cell={cell} />
         );
 
         return <Row key={key}>{cells}</Row>;
@@ -34,8 +35,13 @@ export default class Board extends Component {
     }
 
     render() {
+        const className = classnames({
+            "board": true,
+            "board--rotate": this.props.rotate
+        });
+
         return (
-            <div className="board">
+            <div className={className}>
                 {this.renderCells()}
             </div>
         );
