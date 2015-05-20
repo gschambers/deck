@@ -1,5 +1,6 @@
 import classnames from "classnames";
 import React, { Component, PropTypes } from "react";
+import Attribute from "./Attribute";
 import CardModel from "../models/Card";
 
 export default class Card extends Component {
@@ -12,6 +13,17 @@ export default class Card extends Component {
         visible: true
     };
 
+    renderAttributes() {
+        return this.props.card.attributes.map(
+            (attribute) => (
+                <Attribute
+                    key={attribute.name}
+                    attribute={attribute}
+                />
+            )
+        );
+    }
+
     render() {
         const className = classnames({
             "card": true,
@@ -20,7 +32,11 @@ export default class Card extends Component {
 
         return (
             <div className={className}>
-                {this.props.card.name}
+                <div className="card-name">
+                    {this.props.card.name}
+                </div>
+
+                {this.renderAttributes()}
             </div>
         );
     }

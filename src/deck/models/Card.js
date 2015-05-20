@@ -20,6 +20,13 @@ export default Record({
     attributes: List(),
 
     /**
+     * Equipment (enhancements) attached to this card.
+     *
+     * @type {List<Equipment>}
+     */
+    equipment: List(),
+
+    /**
      * Faction of the card. Imbues the card with additional
      * attributes and characteristics.
      *

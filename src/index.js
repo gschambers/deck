@@ -1,6 +1,6 @@
 import { createRouter, redirect } from "router-rx";
 import { Observable } from "rx";
-import { BoardController } from "./board/controllers/BoardController";
+import { LevelController } from "./level/controllers/LevelController";
 
 /**
  * @return {Rx.Disposable}
@@ -8,7 +8,7 @@ import { BoardController } from "./board/controllers/BoardController";
 function main() {
     return createRouter({
         "/": redirect("/1"),
-        "/:id": BoardController
+        "/:id": LevelController
     });
 }
 

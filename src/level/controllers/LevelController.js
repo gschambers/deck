@@ -1,19 +1,21 @@
 import React from "react";
 import { Observable } from "rx";
-import Board from "../components/Board";
-import * as BoardStore from "../stores/BoardStore";
+import LevelView from "../components/LevelView";
+import * as BoardStore from "../../board/stores/BoardStore";
+import * as DeckStore from "../../deck/stores/DeckStore";
 import { logError } from "../../common/helpers/error";
 import { render } from "../../common/helpers/render";
 
 /**
  * @param {Board} board
+ * @param {List<Deck>} decks
  * @return {ReactElement}
  */
-function buildComponent(board) {
+function buildComponent(board, decks) {
     return (
-        <Board
+        <LevelView
             board={board}
-            rotate={true}
+            decks={decks}
         />
     );
 }
@@ -21,9 +23,10 @@ function buildComponent(board) {
 /**
  * @return {Rx.Disposable}
  */
-export function BoardController(id) {
+export function LevelController(id) {
     return Observable.combineLatest(
         BoardStore.observeById(id),
+        DeckStore.observe(),
         buildComponent
     ).forEach(
         render, logError

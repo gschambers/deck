@@ -4,6 +4,7 @@ import { BehaviorSubject } from "rx";
 import Board from "../models/Board";
 import Cell, { types } from "../models/Cell";
 import { wrap } from "../../common/helpers/observe";
+import Attribute from "../../deck/models/Attribute";
 import Card from "../../deck/models/Card";
 
 const state = new BehaviorSubject(
@@ -17,7 +18,11 @@ const state = new BehaviorSubject(
                         cards: List([
                             Card({
                                 id: 1,
-                                name: "Avatar of the Fallen"
+                                name: "Avatar of the Fallen",
+                                attributes: List([
+                                    Attribute({ name: "Attack", value: 10 }),
+                                    Attribute({ name: "Defence", value: 9 })
+                                ])
                             })
                         ])
                     })
