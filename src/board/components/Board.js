@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import { List } from "immutable";
 import React, { Component, PropTypes } from "react";
 
 import BoardModel from "../models/Board";
@@ -20,12 +21,22 @@ export default class Board extends Component {
         rotate: false
     };
 
-    renderRow(row, key) {
+    renderRow(row, i) {
         const cells = row.map(
-            (cell, i) => <Cell key={i} cell={cell} />
+            (cell, j) => (
+                <Cell
+                    key={j}
+                    cell={cell}
+                    pos={List([i, j])}
+                />
+            )
         );
 
-        return <Row key={key}>{cells}</Row>;
+        return (
+            <Row key={i}>
+                {cells}
+            </Row>
+        );
     }
 
     renderCells() {

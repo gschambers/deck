@@ -18,6 +18,16 @@ const state = new BehaviorSubject(
                         Attribute({ name: "Attack", value: 6 }),
                         Attribute({ name: "Defence", value: 5 })
                     ])
+                }),
+
+                Card({
+                    id: 2,
+                    name: "Volunteer",
+                    description: "Basic melee unit",
+                    attributes: List([
+                        Attribute({ name: "Attack", value: 6 }),
+                        Attribute({ name: "Defence", value: 5 })
+                    ])
                 })
             ])
         })

@@ -1,3 +1,4 @@
+import { Map } from "immutable";
 import { dispatch } from "../../common/helpers/action";
 
 /**

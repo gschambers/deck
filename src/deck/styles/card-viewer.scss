@@ -1,0 +1,9 @@
+.card-viewer {
+    display: flex;
+    height: 30vh;
+    transform: translateY(-30vh);
+
+    .card {
+        width: 20%;
+    }
+}

@@ -25,10 +25,11 @@ function buildComponent(board, decks) {
  */
 export function LevelController(id) {
     return Observable.combineLatest(
-        BoardStore.observeById(id),
+        BoardStore.observe(),
         DeckStore.observe(),
         buildComponent
     ).forEach(
-        render, logError
+        render,
+        logError
     );
 }
