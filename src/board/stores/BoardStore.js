@@ -110,7 +110,8 @@ function handlePlaceCard(data) {
 
     if (isValidCardPlacement(cell, card, player)) {
         const cards = List([card]);
-        cell = cell.merge({ cards, player });
+        const type = types.OCCUPIED;
+        cell = cell.merge({ type, cards, player });
         board = updateCellAtPosition(board, pos, cell);
     }
 

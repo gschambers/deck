@@ -6,7 +6,8 @@ export const types = keyMirror({
     DISCARD: null,
     DRAW: null,
     EMPTY: null,
-    HAND: null
+    HAND: null,
+    OCCUPIED: null
 });
 
 export default Record({
@@ -20,6 +21,7 @@ export default Record({
      * DRAW - cards that can be drawn into hand
      * EMPTY - no card may be played
      * HAND - cards available to play next turn
+     * OCCUPIED - occupied by one or more player cards
      *
      * @type {Number}
      */

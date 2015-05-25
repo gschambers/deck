@@ -69,6 +69,7 @@ export default class Card extends Component {
     render() {
         const className = classnames({
             "card": true,
+            "card--dragging": this.props.isDragging,
             "card--visible": this.props.isVisible
         });
 
