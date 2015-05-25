@@ -13,6 +13,7 @@ export default class CardViewer extends Component {
                 <Card
                     key={card.id}
                     card={card}
+                    isDraggable={true}
                 />
             )
         );

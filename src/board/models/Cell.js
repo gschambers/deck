@@ -1,12 +1,13 @@
+import keyMirror from "keymirror";
 import { List, Record } from "immutable";
 
-export const types = {
-    COMMUNITY: 0,
-    DISCARD: 1,
-    DRAW: 2,
-    EMPTY: 3,
-    HAND: 4
-};
+export const types = keyMirror({
+    COMMUNITY: null,
+    DISCARD: null,
+    DRAW: null,
+    EMPTY: null,
+    HAND: null
+});
 
 export default Record({
     /**
@@ -29,5 +30,12 @@ export default Record({
      *
      * @type {!List<Card>}
      */
-    cards: List()
+    cards: List(),
+
+    /**
+     * The player that controls this cell.
+     *
+     * @type {?Player}
+     */
+    player: null
 });

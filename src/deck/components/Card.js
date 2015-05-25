@@ -22,6 +22,15 @@ const spec = {
     /**
      * @param {Object} props
      * @param {DragSourceMonitor} monitor
+     * @return {Boolean}
+     */
+    canDrag(props, monitor) {
+        return props.isDraggable;
+    },
+
+    /**
+     * @param {Object} props
+     * @param {DragSourceMonitor} monitor
      * @param {ReactElement} component
      */
     beginDrag(props, monitor, component) {
@@ -33,6 +42,7 @@ const spec = {
 export default class Card extends Component {
     static propTypes = {
         card: PropTypes.instanceOf(CardModel).isRequired,
+        isDraggable: PropTypes.bool.isRequired,
         isVisible: PropTypes.bool.isRequired,
 
         // Injected react-dnd props
@@ -41,6 +51,7 @@ export default class Card extends Component {
     };
 
     static defaultProps = {
+        isDraggable: false,
         isVisible: true
     };
 

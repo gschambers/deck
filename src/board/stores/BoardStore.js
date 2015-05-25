@@ -32,12 +32,17 @@ export {
 };
 
 /**
+ * @param {Board} board
+ * @param {List<Number>} pos
  * @param {Cell} cell
- * @param {Card} card
  * @return {Board}
  */
-function addCardToCell(cell, card) {
-    return state.value;
+function updateCellAtPosition(board, pos, cell) {
+    return board.updateIn(
+        ["cells"], cells => cells.mergeIn(
+            pos, cell
+        )
+    );
 }
 
 /**
@@ -55,6 +60,7 @@ function findCellAtPosition(board, pos) {
  * @return {Boolean}
  */
 function isPlayableCard(player, card) {
+    // TODO: Check whether player is able to play card
     return true;
 }
 
@@ -64,8 +70,7 @@ function isPlayableCard(player, card) {
  * @return {Boolean}
  */
 function isPlayableCell(player, cell) {
-    // TODO(gary): Move this condition into rules engine
-    return cell.type === types.EMPTY;
+    return cell.type === types.EMPTY && cell.player === null;
 }
 
 /**
@@ -98,10 +103,15 @@ function handlePlaceCard(data) {
     let board = state.value;
 
     const card = data.get("card");
-    const cell = findCellAtPosition(board, data.get("pos"));
+    const player = data.get("player");
+    const pos = data.get("pos");
 
-    if (isValidCardPlacement(cell, card)) {
-        board = addCardToCell(cell, card);
+    let cell = findCellAtPosition(board, pos);
+
+    if (isValidCardPlacement(cell, card, player)) {
+        const cards = List([card]);
+        cell = cell.merge({ cards, player });
+        board = updateCellAtPosition(board, pos, cell);
     }
 
     return board;
